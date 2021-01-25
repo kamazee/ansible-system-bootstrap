@@ -1,0 +1,30 @@
+---
+- name: Install sudo
+  become: yes
+  apt:
+    pkg: sudo
+    state: "{{ apt_state_default | default('present') }}"
+
+- name: Create wheel group
+  become: yes
+  group:
+    name: wheel
+    system: yes
+
+- name: Enable wheel group
+  become: yes
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel\s+'
+    line: '%wheel ALL=(ALL) NOPASSWD:ALL'
+    validate: 'visudo -cf %s'
+
+- name: Enable sudo group
+  become: yes
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%sudo\s+'
+    line: '%sudo  ALL=(ALL) ALL'
+    validate: 'visudo -cf %s'

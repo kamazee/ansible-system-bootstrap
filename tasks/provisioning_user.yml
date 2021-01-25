@@ -1,0 +1,17 @@
+---
+- name: Create ansible user
+  become: yes
+  user:
+    name: "{{ kamazee_system_bootstrap_provisioning_user }}"
+    groups: wheel
+    shell: /bin/bash
+    comment: Provisioner
+    update_password: on_create
+    password: "*"
+
+- name: Add authorized key
+  become: yes
+  authorized_key:
+    key: "{{ item }}"
+    user: "{{ kamazee_system_bootstrap_provisioning_user }}"
+  with_items: "{{ kamazee_system_bootstrap_hostmaster_keys | default([]) + kamazee_system_bootstrap_global_hostmaster_keys | default([]) }}"

@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  role_name: system_bootstrap
+  author: Alexander Kurilo
+  description: A role that, given a recently created server with root access, makes bootstrapping actions that are common for my own projects
+  license: MIT
+  # I haven't tested it with earlier versions
+  min_ansible_version: "2.10"
+  platforms:
+    - name: Debian
+      versions:
+        - buster
