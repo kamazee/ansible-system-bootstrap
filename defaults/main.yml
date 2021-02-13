@@ -1,2 +1,3 @@
 ---
 kamazee_system_bootstrap_ssh_port: 22
+deb_mirror_backports: "http://ftp.us.debian.org/debian"
