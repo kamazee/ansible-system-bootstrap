@@ -2,7 +2,7 @@
 - name: Add backports
   become: yes
   apt_repository:
-    repo: "deb {{ deb_mirror_backports }} buster-backports main"
+    repo: "deb {{ deb_mirror_backports }} {{ kamazee_system_bootstrap_release_codename }}-backports main"
 
 - name: Install latest sshd from backports
   become: yes
@@ -12,7 +12,7 @@
       - openssh-client
       - openssh-sftp-server
     state: latest
-    default_release: buster-backports
+    default_release: "{{ kamazee_system_bootstrap_release_codename }}-backports"
     update_cache: yes
     cache_valid_time: "{{ apt_cache_valid_time | default(86400) }}"
 
