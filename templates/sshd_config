@@ -30,7 +30,7 @@ Port {{ kamazee_system_bootstrap_ssh_port }}
 
 #LoginGraceTime 2m
 #PermitRootLogin prohibit-password
-PermitRootLogin no
+PermitRootLogin {{ kamazee_system_bootstrap_ssh_permit_root_login }}
 #StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
@@ -54,7 +54,7 @@ PermitRootLogin no
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication no
+PasswordAuthentication {{ kamazee_system_bootstrap_ssh_password_authentication }}
 #PermitEmptyPasswords no
 
 # Change to yes to enable challenge-response passwords (beware issues with
@@ -86,7 +86,7 @@ UsePAM yes
 
 AllowAgentForwarding no
 AllowTcpForwarding no
-#GatewayPorts no
+GatewayPorts no
 X11Forwarding no
 #X11DisplayOffset 10
 #X11UseLocalhost yes

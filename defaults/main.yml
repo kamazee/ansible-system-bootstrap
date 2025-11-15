@@ -1,4 +1,6 @@
 ---
 kamazee_system_bootstrap_ssh_port: 22
 deb_mirror_backports: "http://ftp.us.debian.org/debian"
-kamazee_system_bootstrap_release_codename: "{{ ansible_lsb.codename }}"
+kamazee_system_bootstrap_release_codename: "{{ ansible_distribution_release }}"
+kamazee_system_bootstrap_ssh_permit_root_login: "no"
+kamazee_system_bootstrap_ssh_password_authentication: "no"
