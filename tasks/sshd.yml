@@ -1,5 +1,5 @@
 ---
-- name: Install latest sshd from backports
+- name: Install latest sshd
   become: yes
   apt:
     name:
