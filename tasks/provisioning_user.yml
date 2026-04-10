@@ -14,4 +14,12 @@
   authorized_key:
     key: "{{ item }}"
     user: "{{ kamazee_system_bootstrap_provisioning_user }}"
-  with_items: "{{ kamazee_system_bootstrap_hostmaster_keys | default([]) + kamazee_system_bootstrap_global_hostmaster_keys | default([]) }}"
+  with_items: "{{ kamazee_system_bootstrap_hostmaster_keys + kamazee_system_bootstrap_global_hostmaster_keys }}"
+
+- name: Remove keys
+  become: yes
+  authorized_key:
+    key: "{{ item }}"
+    user: "{{ kamazee_system_bootstrap_provisioning_user }}"
+    state: absent
+  with_items: "{{ kamazee_system_bootstrap_hostmaster_keys_remove }}"
