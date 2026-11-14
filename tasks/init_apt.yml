@@ -1,0 +1,12 @@
+---
+- name: Check if apt lists dir exists
+  ansible.builtin.stat:
+    path: /var/lib/apt/lists
+  register: kamazee_bootstrap_var_apt_lists_stat
+
+- name: Update apt if it has never been updated
+  become: yes
+  ansible.builtin.command:
+    argv: ["apt-get", "update"]
+  when: not kamazee_bootstrap_var_apt_lists_stat.stat.exists
+
