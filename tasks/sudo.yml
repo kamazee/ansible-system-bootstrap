@@ -3,7 +3,9 @@
   become: yes
   apt:
     pkg: sudo
-    state: "{{ apt_state_default | default('present') }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time | default(86400) }}"
 
 - name: Create wheel group
   become: yes
